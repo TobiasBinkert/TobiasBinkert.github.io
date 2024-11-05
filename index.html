@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobias Binkert</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Verhindert Scrollen der Seite */
+        }
+        header {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+        }
+        header .menu-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 36px; /* 50% größer */
+            cursor: pointer;
+            width: 60px; /* Gleich groß */
+            height: 60px; /* Gleich groß */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: auto; /* Schiebt den Button nach links */
+        }
+        header .email-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 44px; /* 50% größer */
+            cursor: pointer;
+            width: 60px; /* Gleich groß */
+            height: 60px; /* Gleich groß */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto; /* Schiebt den Button nach rechts */
+        }
+        .header-content {
+            display: flex;
+            align-items: center; /* Zentriert vertikal */
+            margin: 0 auto; /* Zentriert horizontal */
+        }
+        header img {
+            width: 40px; /* Bildgröße */
+            height: 40px; /* Bildgröße */
+            border-radius: 50%; /* Optional: Bild rund machen */
+            margin-right: 10px; /* Abstand zwischen Bild und Name */
+            cursor: pointer; /* Zeigt an, dass das Bild klickbar ist */
+        }
+        h1 {
+            font-size: 24px; /* Gleiche Größe wie Buttons */
+            margin: 0;
+            cursor: pointer; /* Zeigt an, dass der Name klickbar ist */
+            color: white; /* Textfarbe des Namens */
+            text-decoration: none; /* Keine Unterstreichung */
+        }
+        main {
+            background-color: #f0f0f0;
+            padding: 20px;
+            color: black;
+            flex: 1; /* Nimmt den restlichen Platz ein */
+            overflow-y: auto; /* Scrollen bei Bedarf */
+            transition: margin-left 0.3s ease; /* Übergang für das Menü */
+        }
+        h2 {
+            font-size: 24px; /* Größe für die Überschrift "About me" und "Links" */
+            margin-top: 20px;
+        }
+        a {
+            color: black; /* Linkfarbe schwarz */
+            text-decoration: none; /* Keine Unterstreichung standardmäßig */
+            display: flex; /* Links untereinander anordnen */
+            margin: 10px 0; /* Abstand zwischen Links */
+            font-size: 18px; /* Schriftgröße der Links */
+            align-items: center;
+        }
+        a:hover {
+            text-decoration: underline; /* Unterstreichung beim Hover */
+        }
+        footer {
+            background-color: white;
+            text-align: center;
+            padding: 10px 0;
+            color: black;
+            height: 50px; /* Feste Höhe */
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -550px; /* Aus dem Sichtfeld beginnen */
+            width: 250px;
+            height: 100%;
+            background-color: #f0f0f0; /* Hintergrundfarbe des Menüs */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out; /* Sanfterer Übergang */
+            z-index: 1000; /* Über anderen Inhalten sichtbar */
+        }
+        .sidebar.active {
+            left: 0; /* Menü ins Sichtfeld bewegen */
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0; /* Standardmäßig unsichtbar */
+            display: none; /* Standardmäßig unsichtbar */
+            z-index: 500; /* Unter der Sidebar */
+            transition: opacity 0.3s ease-in-out; /* Sanfter Übergang für die Überlagerung */
+        }
+        .overlay.active {
+            display: block; /* Sichtbar, wenn Sidebar aktiv ist */
+            opacity: 1; /* Sichtbar machen */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="menu-button" aria-label="Menü öffnen" onclick="toggleMenu()">☰</button>
+    <div class="header-content">
+        <a href="index.html">
+            <img src="Tobi.jpeg" alt=" Tobias Binkert">
+            <h1>Tobias Binkert</h1>
+        </a>
+    </div>
+    <button class="email-button" aria-label="E-Mail senden" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
+</header>
+
+<main>
+    <h2>About me</h2>
+    <p>I’m Tobias Binkert, an app developer dedicated to creating useful and entertaining applications that enhance everyday life.</p>
+    <p>As a passionate developer, I thrive on transforming ideas into engaging digital experiences. My focus is on delivering high-quality apps that not only serve a purpose but also bring joy to users. Whether it’s productivity tools or fun games, I love pushing the boundaries of what’s possible in the app space.</p>
+
+    <h2>Links</h2>
+    <a href="AppList.html">App list</a>
+    <a href="PrivacyPolicy.html">Privacy Policy</a>
+</main>
+
+<aside class="sidebar" id="sidebar">
+    <h2>Links</h2>
+    <a href="index.html">Home</a>
+    <a href="AppList.html">App list</a>
+    <a href="PrivacyPolicy.html">Privacy Policy</a>
+</aside>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<footer>
+    <p>&copy; 2024 Tobias Binkert</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const isActive = sidebar.classList.toggle('active');
+        overlay.classList.toggle('active', isActive);
+    }
+
+    function closeMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+</script>
+
+</body>
+</html>
