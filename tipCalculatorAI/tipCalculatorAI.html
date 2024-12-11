@@ -136,6 +136,15 @@
             padding: 10px; /* Innenabstand */
             margin-top: 20px; /* Abstand zum vorherigen Abschnitt */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Schatten für Tiefe */
+            position: relative; /* Stellt sicher, dass der QR-Code relativ zu diesem Element positioniert wird */
+        }
+        .app-item img:last-child {
+            position: absolute;
+            right: 20px; /* QR-Code 20px vom rechten Rand entfernt */
+            top: 50%; /* Vertikal in der Mitte des Containers */
+            transform: translateY(-50%); /* Zentriert das Bild vertikal */
+            width: 100px; /* Kann angepasst werden */
+            height: 100px; /* Kann angepasst werden */
         }
         .app-image {
             width: 100px; /* Bildbreite */
@@ -155,15 +164,14 @@
             margin-top: 5px; /* Abstand oben zur Beschreibung */
         }
 
-        .app-link {
-            display: block; /* Macht den gesamten Bereich klickbar */
-            text-decoration: none; /* Entfernt die Unterstreichung */
-            color: inherit; /* Erbt die Textfarbe des übergeordneten Elements */
-        }
-
-        .app-item:hover {
-            background-color: #e0e0e0; /* Optional: Hintergrundfarbe ändern bei Hover */
-            cursor: pointer; /* Zeigt an, dass der Bereich klickbar ist */
+        /* Screenshot Image Styling */
+        .screenshot-image {
+            width: auto; /* Entfernt die feste Breite */
+            height: auto; /* Entfernt die feste Höhe */
+            max-width: 100%; /* Stellt sicher, dass das Bild nicht über den Container hinausragt */
+            max-height: 100vh; /* Begrenzung der Bildhöhe auf die Höhe des Viewports */
+            border-radius: 10px; /* Optional: Abgerundete Ecken */
+            margin-right: 15px; /* Abstand zwischen Bild und Text */
         }
     </style>
 </head>
@@ -172,8 +180,8 @@
 <header>
     <button class="menu-button" aria-label="Menü öffnen" onclick="toggleMenu()">☰</button>
     <div class="header-content">
-        <a href="index.html">
-            <img src="Tobi.jpeg" alt="Tobias Binkert">
+        <a href="../index.html" aria-label="Zurück zur Startseite">
+            <img src="../Tobi.jpeg" alt="Tobias Binkert">
             <h1>Tobias Binkert</h1>
         </a>
     </div>
@@ -181,24 +189,33 @@
 </header>
 
 <main>
-    <h2>App List</h2>
-    <!-- Klick auf die Section öffnet die neue Seite -->
-    <a href="tipCalculatorAI/tipcalculatorAI.html" target="_self" class="app-link">
-        <section class="app-item">
-            <img src="Tips.png" alt="Tips Calculator iOS" class="app-image">
-            <div>
-                <span class="app-text">Tip Calculator AI</span>
-                <p class="app-description">Take a photo of your check and let the app calculate the tip.</p>
-            </div>
-        </section>
-    </a>
+    <h2>Tip Calculator AI</h2>
+
+    <!-- Erste App-Section -->
+    <section class="app-item">
+        <img src="QR-Code.jpg" alt="QR code for Tip Calculator iOS app" class="app-image">
+        <div>
+            <span class="app-text">Tip Calculator AI</span>
+            <p class="app-description">Take a photo of your check and let the app calculate the tip.</p>
+            <a href="https://apps.apple.com/us/app/tip-calculator-ai/id6670690514" target="_blank" rel="noopener noreferrer">Link to the App Store</a>
+        </div>
+    </section>
+
+    <!-- Zweite Section mit Screenshot-Bild -->
+    <section class="app-item">
+        <img src="Tip_Calculator_Screenshot.jpg" alt="Screenshot of the Tip Calculator app" class="screenshot-image">
+        <div>
+  
+        </div>
+    </section>
+
 </main>
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar" id="sidebar" role="navigation">
     <h2>Links</h2>
-    <a href="index.html">Home</a>
-    <a href="applist.html">App list</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="../index.html">Home</a>
+    <a href="../applist.html">App list</a>
+    <a href="../privacypolicy.html">Privacy Policy</a>
 </aside>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
@@ -211,10 +228,8 @@
     function toggleMenu() {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
-        const menuButton = document.querySelector('.menu-button');
         const isActive = sidebar.classList.toggle('active');
         overlay.classList.toggle('active', isActive);
-        menuButton.setAttribute('aria-expanded', isActive ? 'true' : 'false');
     }
 
     function closeMenu() {
