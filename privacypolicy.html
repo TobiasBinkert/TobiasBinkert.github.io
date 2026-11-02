@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Offizielle Webseite von Tobias Binkert. Informationen über Apps, Datenschutz und mehr.">
+    <meta name="description" content="Official website of Tobias Binkert. Information about apps, privacy and more." data-i18n-content="privacyDescription">
     <title>Tobias Binkert</title>
+    <script src="i18n.js"></script>
     <style>
         body {
             margin: 0;
@@ -160,23 +161,46 @@
             color: black; /* Textfarbe */
             margin-top: 5px; /* Abstand oben zur Beschreibung */
         }
+
+        /* Language handling: show only the active language (see i18n.js) */
+        html:not([lang="de"]) [lang="de"],
+        html[lang="de"] [lang="en"] {
+            display: none;
+        }
+        header .lang-button {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 6px;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        header .lang-button + .email-button {
+            margin-left: 4px;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <button class="menu-button" aria-label="Menü öffnen" onclick="toggleMenu()">☰</button>
+    <button class="menu-button" aria-label="Open menu" data-i18n-aria-label="menuOpen" onclick="toggleMenu()">☰</button>
     <div class="header-content">
         <a href="index.html">
-            <img src="Tobi.jpeg" alt="Profilbild von Tobias Binkert">
+            <img src="Tobi.jpeg" alt="Profile picture of Tobias Binkert" data-i18n-alt="profilePicture">
             <h1>Tobias Binkert</h1>
         </a>
     </div>
-    <button class="email-button" aria-label="E-Mail senden" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
+    <button class="lang-button" aria-label="Deutsch / English" onclick="toggleLanguage()"><span lang="en">DE</span><span lang="de">EN</span></button>
+    <button class="email-button" aria-label="Send email" data-i18n-aria-label="sendEmail" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
 </header>
 
 <main>
-    <h2>Privacy Policy</h2>
+    <h2 lang="en">Privacy Policy</h2>
+    <h2 lang="de">Datenschutzerklärung</h2>
+
+    <div lang="en">
   
         <h26>Effective Date: October 30, 2024</h26>
         <p>Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile applications ("Apps"). Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not use our mobile applications.</p>
@@ -227,7 +251,7 @@
                         <li>Operating system</li>
                         <li>Device models</li>
                         <li>Region</li>
-                        <li>First-time launc</li>
+                        <li>First-time launches</li>
                         <li>App executions</li>
                         <li>App updates</li>
                         <li>In-app purchases</li>
@@ -307,15 +331,148 @@
         </ol>
         <h3>Contact Us</h3>
         <p>If you have any questions or concerns regarding this Privacy Policy, please reach out through the contact button of this website.</p>
-        
-        <button class="email-button" aria-label="E-Mail senden" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">Contact us</button>
+    </div>
+
+    <div lang="de">
+        <h26>Gültig ab: 30. Oktober 2024</h26>
+        <p>Der Schutz deiner Privatsphäre ist uns wichtig. Diese Datenschutzerklärung erläutert, wie wir deine Informationen erheben, verwenden, weitergeben und schützen, wenn du unsere mobilen Anwendungen („Apps“) nutzt. Bitte lies diese Datenschutzerklärung sorgfältig durch. Wenn du mit den Bedingungen dieser Datenschutzerklärung nicht einverstanden bist, nutze unsere mobilen Anwendungen bitte nicht.</p>
+
+        <p>
+        Mit der Nutzung einer mobilen Anwendung von Tobias Binkert erklärst du dich mit den festgelegten Bedingungen, Einschränkungen und Datenschutzbestimmungen einverstanden.
+        Diese Seite informiert dich über die Richtlinien zur Erhebung, Verwendung und Weitergabe personenbezogener Daten in den mobilen Anwendungen von Tobias Binkert.
+        </p>
+
+        <p>
+        Wenn du die Nutzungsbedingungen oder die Datenschutzerklärung nicht akzeptierst, installiere oder nutze die von Tobias Binkert entwickelten mobilen Anwendungen bitte nicht.
+
+        An dieser Stelle weisen wir darauf hin, dass die Datenübertragung und Kommunikation im Internet Sicherheitslücken aufweisen kann.
+        Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte (Hacker usw.) ist nicht möglich.
+
+        Tobias Binkert behält sich das Recht vor, diese Datenschutzerklärung zu ändern. Mit der Nutzung und Installation der mobilen Anwendungen erklärst du dich mit den Bedingungen dieser Datenschutzerklärung einverstanden.
+        </p>
+
+        <h26>Welche Informationen wir erheben</h26>
+        <p>Wir können Informationen über dich auf verschiedene Weise erheben, unter anderem wie folgt:</p>
+        <ul>
+            <li><strong>Personenbezogene Daten:</strong> Wir erheben keine personenbezogenen Daten, die dich identifizieren könnten, wie etwa deinen Namen, deine E-Mail-Adresse oder Telefonnummer oder Ähnliches.</li>
+            <li><strong>Nutzungsdaten:</strong> Wir können Informationen darüber erheben, wie du unsere mobilen Anwendungen nutzt. Dazu gehören Informationen über deine Interaktionen mit der mobilen Anwendung, die von dir genutzten Funktionen und die Zeit, die du in der mobilen Anwendung verbringst.</li>
+        </ul>
+
+        <h26>Verwendung deiner Informationen</h26>
+        <p>Wir können die erhobenen Informationen wie folgt verwenden:</p>
+        <ul>
+            <li>Um das Nutzerverhalten zu analysieren und unsere mobilen Anwendungen zu verbessern.</li>
+            <li>Um zu verstehen, wie unsere mobilen Anwendungen genutzt werden, und um das Nutzungserlebnis zu verbessern.</li>
+        </ul>
+
+        <h26>Dienste von Drittanbietern</h26>
+        <p>Wir nutzen Dienste von Drittanbietern, die Informationen erheben können, mit denen du identifiziert werden kannst:</p>
+        <ol>
+            <li><strong>Google Firebase</strong>
+                <ul>
+                    <p>Wir verwenden Google Firebase, um Daten darüber zu analysieren, wie die mobilen Anwendungen genutzt werden. Firebase kann Nutzungsdaten, Geräteinformationen und weitere Analysedaten erheben.
+
+                    Firebase Analytics ermöglicht es uns, die Nutzung zu analysieren und Probleme zu beheben.
+                    Informationen (wie Betriebssystem des Geräts, Gerätename, Absturzursache, Klicks) zur Nutzung der jeweiligen mobilen Anwendung werden an Google übermittelt und dort gespeichert.
+                    Wir können auf diese Informationen zugreifen und verwenden sie, um das Nutzungserlebnis zu bewerten und zu optimieren oder um technische Programmierprobleme zu beheben.
+
+                    In der Standardimplementierung von Google Analytics for Firebase werden die folgenden Datentypen erfasst:
+                    <ol>
+                        <li>Anzahl der Nutzer</li>
+                        <li>Sitzungsdauer</li>
+                        <li>Betriebssystem</li>
+                        <li>Gerätemodelle</li>
+                        <li>Region</li>
+                        <li>Erster Start</li>
+                        <li>App-Ausführungen</li>
+                        <li>App-Updates</li>
+                        <li>In-App-Käufe</li>
+                    </ol>
+                    <p>
+                    </p>
+                        Google verwendet die Werbe-ID des Endgeräts zur eindeutigen Identifizierung. Du kannst die Verwendung der Werbe-ID in den Geräteeinstellungen deines iOS-Geräts einschränken:
+                        <p>
+                        Du kannst die Verwendung der Werbe-ID auf einem iOS-Gerät in den Geräteeinstellungen einschränken:
+                        Öffne Einstellungen > Tippe auf Datenschutz & Sicherheit > Wähle Tracking > Deaktiviere die Option „Apps erlauben, Tracking anzufordern“
+                        </p>
+
+
+                        Du kannst außerdem die zielgerichtete Werbung von Apple deaktivieren, indem du:
+                        Einstellungen > Datenschutz & Sicherheit > Apple-Werbung öffnest
+                        und den Schalter „Personalisierte Werbung“ ausschaltest.
+                        Wenn du die Werbe-ID deaktivierst, wird es für Werbetreibende und Datenhändler schwieriger, dich zu verfolgen. Das kann auch deine Privatsphäre schützen und die überwachungsbasierte Werbeindustrie weniger profitabel machen.
+                        Werbetreibende verwenden die Werbe-ID, um: die Wirksamkeit ihres Marketings zu verstehen, Kundenprofile zu erstellen und bestimmte Personen gezielt anzusprechen.
+
+
+                    </p>
+                    Weitere Informationen zur Datenerhebung durch Firebase findest du in der
+                        <a href="https://firebase.google.com/support/privacy" style="color: blue; text-decoration: underline;">Firebase-Datenschutzerklärung</a>
+
+
+                    Weitere Informationen zum Datenschutz bei Google-Produkten findest du hier:
+                        <a href="https://www.google.com/policies/privacy/" style="color: blue; text-decoration: underline;">Datenschutzerklärung von Google</a>
+                </ul>
+            </li>
+
+            <p></p>
+            <li><strong>Google AdMob</strong>
+                <ul>
+                    <p>Wir verwenden Google AdMob, um Werbeanzeigen innerhalb der App anzuzeigen. AdMob kann Informationen über dein Gerät und dein Nutzungsverhalten erheben, um personalisierte Werbung auszuspielen.
+                    </p>
+
+                    <p>
+                        Die erzeugten Informationen (einschließlich deiner IP-Adresse) werden an Google übertragen. Google behält sich das Recht vor, die erhobenen Daten an Vertragspartner von Google weiterzugeben.
+                        Google wird deine IP-Adresse nicht mit anderen von dir erhobenen Daten in Verbindung bringen.
+                        Die übertragenen Daten, wie die IP-Adresse, benötigt Google Inc. für die Provisionsabrechnung und damit auch für die Auswertung der Herkunft eines Besuchers und die Nachvollziehbarkeit von Klicks.
+
+                        Bei mobilen Anwendungen verwendet Google die Werbe-ID des Endgeräts, um einen Nutzer eindeutig zu identifizieren.
+                        Du hast die Möglichkeit, personalisierte Werbung für dein Gerät über bestimmte Einstellungen zu deaktivieren.
+                    </p>
+
+                    <p>
+                        Du kannst die Verwendung der Werbe-ID auf einem iOS-Gerät in den Geräteeinstellungen einschränken:
+                        Öffne Einstellungen > Tippe auf Datenschutz & Sicherheit > Wähle Tracking > Deaktiviere die Option „Apps erlauben, Tracking anzufordern“
+
+                        <p>Du kannst außerdem die zielgerichtete Werbung von Apple deaktivieren, indem du:
+                        Einstellungen > Datenschutz & Sicherheit > Apple-Werbung öffnest
+                        und den Schalter „Personalisierte Werbung“ ausschaltest.
+                        Wenn du die Werbe-ID deaktivierst, wird es für Werbetreibende und Datenhändler schwieriger, dich zu verfolgen. Das kann auch deine Privatsphäre schützen und die überwachungsbasierte Werbeindustrie weniger profitabel machen.
+                        Werbetreibende verwenden die Werbe-ID, um: die Wirksamkeit ihres Marketings zu verstehen, Kundenprofile zu erstellen und bestimmte Personen gezielt anzusprechen.
+                        </p>
+                    </p>
+
+                    <p>
+                        Mit der Nutzung der mobilen Anwendungen von Tobias Binkert willigst du in die Verarbeitung deiner Daten durch Google ein.
+                    </p>
+
+
+                    <p>Weitere Einzelheiten dazu, wie Google mit deinen Daten umgeht, findest du in der <a href="https://policies.google.com/privacy?hl=de" style="color: blue; text-decoration: underline;">Datenschutzerklärung von Google</a>
+
+                        Die Datenschutzerklärung zu Google Ads findest du hier:
+                        <a href="http://www.google.de/policies/technologies/ads/" style="color: blue; text-decoration: underline;">Datenschutzerklärung zu Google Ads</a>
+
+                        Weitere Informationen zur Verwendung personenbezogener Daten durch Google findest du hier:
+                        <a href="https://www.google.com/policies/technologies/partner-sites/" style="color: blue; text-decoration: underline;">Google-Partnerwebsites</a>
+                    </p>
+
+                    <p>
+                        Google AdSense und Google AdMob sind Dienste von Google Inc.
+                    </p>
+                </ul>
+            </li>
+        </ol>
+        <h3>Kontakt</h3>
+        <p>Wenn du Fragen oder Bedenken zu dieser Datenschutzerklärung hast, melde dich bitte über den Kontakt-Button dieser Webseite.</p>
+    </div>
+
+    <button class="email-button" aria-label="Send email" data-i18n-aria-label="sendEmail" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'"><span lang="en">Contact us</span><span lang="de">Kontakt aufnehmen</span></button>
 </main>
 
 <aside class="sidebar" id="sidebar">
     <h2>Links</h2>
-    <a href="index.html">Home</a>
-    <a href="applist.html">App list</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="index.html"><span lang="en">Home</span><span lang="de">Startseite</span></a>
+    <a href="applist.html"><span lang="en">App list</span><span lang="de">App-Liste</span></a>
+    <a href="privacypolicy.html"><span lang="en">Privacy Policy</span><span lang="de">Datenschutzerklärung</span></a>
 </aside>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>

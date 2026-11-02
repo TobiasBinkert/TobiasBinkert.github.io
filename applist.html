@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobias Binkert</title>
+    <script src="i18n.js"></script>
     <style>
         body {
             margin: 0;
@@ -165,30 +166,52 @@
             background-color: #e0e0e0; /* Optional: Hintergrundfarbe ändern bei Hover */
             cursor: pointer; /* Zeigt an, dass der Bereich klickbar ist */
         }
+
+        /* Language handling: show only the active language (see i18n.js) */
+        html:not([lang="de"]) [lang="de"],
+        html[lang="de"] [lang="en"] {
+            display: none;
+        }
+        header .lang-button {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 6px;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        header .lang-button + .email-button {
+            margin-left: 4px;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <button class="menu-button" aria-label="Menü öffnen" onclick="toggleMenu()">☰</button>
+    <button class="menu-button" aria-label="Open menu" data-i18n-aria-label="menuOpen" onclick="toggleMenu()">☰</button>
     <div class="header-content">
         <a href="index.html">
             <img src="Tobi.jpeg" alt="Tobias Binkert">
             <h1>Tobias Binkert</h1>
         </a>
     </div>
-    <button class="email-button" aria-label="E-Mail senden" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
+    <button class="lang-button" aria-label="Deutsch / English" onclick="toggleLanguage()"><span lang="en">DE</span><span lang="de">EN</span></button>
+    <button class="email-button" aria-label="Send email" data-i18n-aria-label="sendEmail" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
 </header>
 
 <main>
-    <h2>App List</h2>
+    <h2 lang="en">App List</h2>
+    <h2 lang="de">App-Liste</h2>
     <!-- Klick auf die Section öffnet die neue Seite -->
     <a href="tipCalculatorAI/index.html" target="_self" class="app-link">
         <section class="app-item">
-            <img src="Tips.png" alt="Tips Calculator iOS" class="app-image">
+            <img src="Tips.png" alt="Tips Calculator iOS" data-i18n-alt="tipsAlt" class="app-image">
             <div>
                 <span class="app-text">Tip Calculator AI</span>
-                <p class="app-description">Take a photo of your check and let the app calculate the tip.</p>
+                <p class="app-description" lang="en">Take a photo of your check and let the app calculate the tip.</p>
+                <p class="app-description" lang="de">Fotografiere deine Rechnung und lass die App das Trinkgeld berechnen.</p>
             </div>
         </section>
     </a>
@@ -197,7 +220,8 @@
             <img src="photoCardPairs/PhotoCardPairsAppIcon.png" alt="Photo Card Pairs" class="app-image">
             <div>
                 <span class="app-text">Photo Card Pairs</span>
-                <p class="app-description">A memory game where you find matching pairs — using your own photos as the cards.</p>
+                <p class="app-description" lang="en">A memory game where you find matching pairs — using your own photos as the cards.</p>
+                <p class="app-description" lang="de">Ein Memory-Spiel, bei dem du passende Paare findest – mit deinen eigenen Fotos als Karten.</p>
             </div>
         </section>
     </a>
@@ -205,9 +229,9 @@
 
 <aside class="sidebar" id="sidebar">
     <h2>Links</h2>
-    <a href="index.html">Home</a>
-    <a href="applist.html">App list</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="index.html"><span lang="en">Home</span><span lang="de">Startseite</span></a>
+    <a href="applist.html"><span lang="en">App list</span><span lang="de">App-Liste</span></a>
+    <a href="privacypolicy.html"><span lang="en">Privacy Policy</span><span lang="de">Datenschutzerklärung</span></a>
 </aside>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobias Binkert</title>
+    <script src="i18n.js"></script>
     <style>
         body {
             margin: 0;
@@ -127,37 +128,64 @@
             display: block; /* Sichtbar, wenn Sidebar aktiv ist */
             opacity: 1; /* Sichtbar machen */
         }
+
+        /* Language handling: show only the active language (see i18n.js) */
+        html:not([lang="de"]) [lang="de"],
+        html[lang="de"] [lang="en"] {
+            display: none;
+        }
+        header .lang-button {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 6px;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        header .lang-button + .email-button {
+            margin-left: 4px;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <button class="menu-button" aria-label="Menü öffnen" onclick="toggleMenu()">☰</button>
+    <button class="menu-button" aria-label="Open menu" data-i18n-aria-label="menuOpen" onclick="toggleMenu()">☰</button>
     <div class="header-content">
         <a href="index.html">
-            <img src="Tobi.jpeg" alt=" Tobias Binkert">
+            <img src="Tobi.jpeg" alt="Tobias Binkert">
             <h1>Tobias Binkert</h1>
         </a>
     </div>
-    <button class="email-button" aria-label="E-Mail senden" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
+    <button class="lang-button" aria-label="Deutsch / English" onclick="toggleLanguage()"><span lang="en">DE</span><span lang="de">EN</span></button>
+    <button class="email-button" aria-label="Send email" data-i18n-aria-label="sendEmail" onclick="window.location.href='mailto:tobias.binkert.apps@gmail.com'">✉</button>
 </header>
 
 <main>
-    <h2>About me</h2>
-    <p>I’m Tobias Binkert, an app developer dedicated to creating useful and entertaining applications that enhance everyday life.</p>
-    <p>As a passionate developer, I thrive on transforming ideas into engaging digital experiences. My focus is on delivering high-quality apps that not only serve a purpose but also bring joy to users. Whether it’s productivity tools or fun games, I love pushing the boundaries of what’s possible in the app space.</p>
+    <h2 lang="en">About me</h2>
+    <h2 lang="de">Über mich</h2>
+    <div lang="en">
+        <p>I’m Tobias Binkert, an app developer dedicated to creating useful and entertaining applications that enhance everyday life.</p>
+        <p>As a passionate developer, I thrive on transforming ideas into engaging digital experiences. My focus is on delivering high-quality apps that not only serve a purpose but also bring joy to users. Whether it’s productivity tools or fun games, I love pushing the boundaries of what’s possible in the app space.</p>
+    </div>
+    <div lang="de">
+        <p>Ich bin Tobias Binkert, App-Entwickler, und entwickle nützliche und unterhaltsame Apps, die den Alltag bereichern.</p>
+        <p>Als leidenschaftlicher Entwickler liebe ich es, Ideen in ansprechende digitale Erlebnisse zu verwandeln. Mein Fokus liegt auf hochwertigen Apps, die nicht nur einen Zweck erfüllen, sondern auch Freude bereiten. Ob Produktivitäts-Tools oder unterhaltsame Spiele – ich liebe es, die Grenzen des Möglichen im App-Bereich zu verschieben.</p>
+    </div>
     <br>
     <br>
     <h2>Links</h2>
-    <a href="applist.html">App list</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="applist.html"><span lang="en">App list</span><span lang="de">App-Liste</span></a>
+    <a href="privacypolicy.html"><span lang="en">Privacy Policy</span><span lang="de">Datenschutzerklärung</span></a>
 </main>
 
 <aside class="sidebar" id="sidebar">
     <h2>Links</h2>
-    <a href="index.html">Home</a>
-    <a href="applist.html">App list</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
+    <a href="index.html"><span lang="en">Home</span><span lang="de">Startseite</span></a>
+    <a href="applist.html"><span lang="en">App list</span><span lang="de">App-Liste</span></a>
+    <a href="privacypolicy.html"><span lang="en">Privacy Policy</span><span lang="de">Datenschutzerklärung</span></a>
 </aside>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
